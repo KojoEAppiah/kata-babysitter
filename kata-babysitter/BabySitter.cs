@@ -44,5 +44,11 @@
         {
             return 12 * calculateHoursBeforeBedtime();
         }
+
+        public int getAfterBedtimeBeforeMidnightPay()
+        {
+            return 8 * calculateHoursAfterBedtimeBeforeMidnight();
+        }
+
     }
 }
