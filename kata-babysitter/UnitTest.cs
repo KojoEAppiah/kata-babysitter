@@ -8,8 +8,10 @@ namespace kata_babysitter
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void BabySitterPaidForOneHourBeforeBedtime1()
         {
+            BabySitter babySitter = new BabySitter(5, 6, 10);
+            Assert.AreEqual(1, babySitter.calculateHoursBeforeBedtime());
         }
     }
 }
