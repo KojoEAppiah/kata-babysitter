@@ -50,18 +50,22 @@
 
         public int getBeforeBedtimePay()
         {
-            return this.rate_before_bedtime * calculateHoursBeforeBedtime();
+            return this.rate_before_bedtime * this.calculateHoursBeforeBedtime();
         }
 
         public int getAfterBedtimeBeforeMidnightPay()
         {
-            return this.rate_after_bedtime_before_midnight * calculateHoursAfterBedtimeBeforeMidnight();
+            return this.rate_after_bedtime_before_midnight * this.calculateHoursAfterBedtimeBeforeMidnight();
         }
 
         public int getAfterMidnightPay()
         {
-            return this.rate_after_midnight * calculateHoursAfterMidnight();
+            return this.rate_after_midnight * this.calculateHoursAfterMidnight();
         }
 
+        public int calculateNightsPay()
+        {
+            return this.getBeforeBedtimePay() + this.getAfterBedtimeBeforeMidnightPay() + getAfterMidnightPay();
+        }
     }
 }
