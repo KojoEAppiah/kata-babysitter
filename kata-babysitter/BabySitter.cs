@@ -39,5 +39,10 @@
                 return this.departure_time - 12;
             }
         }
+
+        public int getBeforeBedtimePay()
+        {
+            return 12 * calculateHoursBeforeBedtime();
+        }
     }
 }
