@@ -7,12 +7,20 @@
         private int hours_before_bedtime;
         private int bedtime;
 
+        private int rate_before_bedtime;
+        private int rate_after_bedtime_before_midnight;
+        private int rate_after_midnight;
+
         public BabySitter(int arrival, int departure, int bedtime)
         {
             this.arrival_time = arrival;
             this.departure_time = departure;
             this.bedtime = bedtime;
-        }
+
+            this.rate_before_bedtime = 12;
+            this.rate_after_bedtime_before_midnight = 8;
+            this.rate_after_midnight = 16;
+    }
 
         public int calculateHoursBeforeBedtime()
         {
@@ -42,12 +50,17 @@
 
         public int getBeforeBedtimePay()
         {
-            return 12 * calculateHoursBeforeBedtime();
+            return this.rate_before_bedtime * calculateHoursBeforeBedtime();
         }
 
         public int getAfterBedtimeBeforeMidnightPay()
         {
-            return 8 * calculateHoursAfterBedtimeBeforeMidnight();
+            return this.rate_after_bedtime_before_midnight * calculateHoursAfterBedtimeBeforeMidnight();
+        }
+
+        public int getAfterMidnightPay()
+        {
+            return this.rate_after_midnight * calculateHoursAfterMidnight();
         }
 
     }
