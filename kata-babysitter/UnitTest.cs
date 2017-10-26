@@ -63,6 +63,23 @@ namespace kata_babysitter
         {
             BabySitter babySitter = new BabySitter(5, 16, 10);
             Assert.AreEqual(140, babySitter.calculateNightsPay());
-        } 
+        }
+
+        [TestMethod]
+        public void BabySitterPaidForOneRandomNight()
+        {
+            BabySitter babySitter = new BabySitter(7, 14, 13);
+            Assert.AreEqual(96, babySitter.calculateNightsPay());
+        }
+
+        [TestMethod]
+        public void BabySitterPaidForOneRandomNight2()
+        {
+            BabySitter babySitter = new BabySitter(13, 16, 10);
+            Assert.AreEqual(0, babySitter.calculateHoursBeforeBedtime());
+            Assert.AreEqual(0, babySitter.calculateHoursAfterBedtimeBeforeMidnight());
+            Assert.AreEqual(3, babySitter.calculateHoursAfterMidnight());
+            Assert.AreEqual(48, babySitter.calculateNightsPay());
+        }
     }
 }

@@ -26,20 +26,34 @@
         {
             if (this.departure_time <= this.bedtime)
                 return this.departure_time - this.arrival_time;
-            else
+            else if (this.arrival_time < this.bedtime)
                 return this.bedtime - this.arrival_time;
+            else
+                return 0;
         }
 
         public int calculateHoursAfterBedtimeBeforeMidnight()
         {
-            if (this.departure_time > 12)
-                return 12 - (this.arrival_time > this.bedtime ? this.arrival_time : this.bedtime);
-            else
-                return this.departure_time - (this.arrival_time > this.bedtime ? this.arrival_time : this.bedtime);
+            if (this.arrival_time < this.bedtime)
+            {
+                if (this.departure_time > 12)
+                    return 12 - (this.arrival_time > this.bedtime ? this.arrival_time : this.bedtime);
+                else
+                    return this.departure_time - (this.arrival_time > this.bedtime ? this.arrival_time : this.bedtime);
+            }
+            else if (this.arrival_time < 12)
+                return 12 - this.arrival_time;
+
+            return 0;
         }
 
         public int calculateHoursAfterMidnight()
         {
+            if(this.arrival_time > 12)
+            {
+                return this.departure_time - this.arrival_time;
+            }
+
             if (this.departure_time <= 12)
                 return 0;
             else
