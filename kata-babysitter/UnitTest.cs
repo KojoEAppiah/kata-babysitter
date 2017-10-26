@@ -8,17 +8,33 @@ namespace kata_babysitter
     public class UnitTest1
     {
         [TestMethod]
-        public void BabySitterPaidForOneHourBeforeBedtime()
+        public void BabySitterCreditedForOneHourBeforeBedtime()
         {
             BabySitter babySitter = new BabySitter(5, 6, 10);
             Assert.AreEqual(1, babySitter.calculateHoursBeforeBedtime());
         }
 
         [TestMethod]
-        public void BabySitterPaidForOneHourAfterBedtimeBeforeMidnight()
+        public void BabySitterCreditedForOneHourAfterBedtimeBeforeMidnight()
         {
             BabySitter babySitter = new BabySitter(11, 12, 10);
             Assert.AreEqual(1, babySitter.calculateHoursAfterBedtimeBeforeMidnight());
+        }
+
+        [TestMethod]
+        public void BabySitterCreditedForOneHourAfterMidnight()
+        {
+            BabySitter babySitter = new BabySitter(11, 13, 10);
+            Assert.AreEqual(1, babySitter.calculateHoursAfterMidnight());
+        }
+
+        [TestMethod]
+        public void BabySitterCreditedForOneFullNight()
+        {
+            BabySitter babySitter = new BabySitter(5, 16, 10);
+            Assert.AreEqual(5, babySitter.calculateHoursBeforeBedtime());
+            Assert.AreEqual(2, babySitter.calculateHoursAfterBedtimeBeforeMidnight());
+            Assert.AreEqual(4, babySitter.calculateHoursAfterMidnight());
         }
     }
 }
