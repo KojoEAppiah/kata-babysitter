@@ -69,7 +69,7 @@ namespace kata_babysitter
         public void BabySitterPaidForOneRandomNight()
         {
             BabySitter babySitter = new BabySitter(7, 14, 13);
-            Assert.AreEqual(96, babySitter.calculateNightsPay());
+            Assert.AreEqual(92, babySitter.calculateNightsPay());
         }
 
         [TestMethod]

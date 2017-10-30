@@ -20,10 +20,13 @@
             this.rate_before_bedtime = 12;
             this.rate_after_bedtime_before_midnight = 8;
             this.rate_after_midnight = 16;
-    }
+        }
 
         public int calculateHoursBeforeBedtime()
         {
+            if (this.bedtime >= 12)
+                return 12 - this.arrival_time;
+
             if (this.departure_time <= this.bedtime)
                 return this.departure_time - this.arrival_time;
             else if (this.arrival_time < this.bedtime)
@@ -34,28 +37,32 @@
 
         public int calculateHoursAfterBedtimeBeforeMidnight()
         {
-            if (this.arrival_time < this.bedtime)
+            if (this.bedtime >= 12)
+                return 0;
+
+            if (this.arrival_time > this.bedtime)
             {
-                if (this.departure_time > 12)
-                    return 12 - (this.arrival_time > this.bedtime ? this.arrival_time : this.bedtime);
+                if (this.departure_time < 12)
+                    return this.departure_time - this.arrival_time;
                 else
-                    return this.departure_time - (this.arrival_time > this.bedtime ? this.arrival_time : this.bedtime);
+                    return 12 - this.arrival_time;
             }
             else if (this.arrival_time < 12)
                 return 12 - this.arrival_time;
-
-            return 0;
+            else
+                return this.bedtime - this.arrival_time;
         }
 
         public int calculateHoursAfterMidnight()
         {
-            if(this.arrival_time > 12)
+            if (this.departure_time <= 12)
+                return 0;
+
+            if (this.arrival_time > 12)
             {
                 return this.departure_time - this.arrival_time;
             }
 
-            if (this.departure_time <= 12)
-                return 0;
             else
             {
                 return this.departure_time - 12;
