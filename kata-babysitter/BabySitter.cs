@@ -24,7 +24,7 @@
 
         public int calculateHoursBeforeBedtime()
         {
-            if (this.bedtime >= 12)
+            if (this.bedtime >= 12 && this.arrival_time <= 12)
                 return 12 - this.arrival_time;
 
             if (this.departure_time <= this.bedtime)
@@ -37,20 +37,16 @@
 
         public int calculateHoursAfterBedtimeBeforeMidnight()
         {
-            if (this.bedtime >= 12)
+            if (this.bedtime >= 12 || this.arrival_time >= 12)
                 return 0;
 
+            if (this.departure_time < 12)
+                return this.departure_time - this.arrival_time;
             if (this.arrival_time > this.bedtime)
-            {
-                if (this.departure_time < 12)
-                    return this.departure_time - this.arrival_time;
-                else
-                    return 12 - this.arrival_time;
-            }
-            else if (this.arrival_time < 12)
-                return 12 - this.arrival_time;
+                return this.arrival_time - this.bedtime;
             else
-                return this.bedtime - this.arrival_time;
+                return 12 - this.bedtime;
+
         }
 
         public int calculateHoursAfterMidnight()
